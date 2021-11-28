@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Render,
 } from '@nestjs/common';
 
 import { TeaSuggestionService } from './tea-suggestion.service';
@@ -22,8 +23,12 @@ export class TeaSuggestionController {
   }
 
   @Get()
+  @Render('tea-suggestion-page.hbs')
   teaSuggestionForLastGoogleFormAnswer() {
-    return this.teaSuggestionService.getTeaSuggestionForLastGoogleFormAnswer();
+    return {
+      suggestion:
+        this.teaSuggestionService.getTeaSuggestionForLastGoogleFormAnswer(),
+    };
   }
 
   @Get(':id')

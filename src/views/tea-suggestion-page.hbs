@@ -1,0 +1,37 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Your tea suggestion</title>
+  </head>
+  <body>
+    <div class='container'>
+        <div class="suggestion">
+            <p>{{suggestion}}</p>
+        </div>
+    </div>
+  </body>
+</html>
+
+<style type='text/css'>
+  div.container { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    position: relative; 
+    height: 100%; 
+    max-width: 100%; 
+  }
+
+  div.suggestion {
+      position: relative;
+      top: 50%;
+  }
+
+  p {
+    font-size: 32px;
+    text-align: center;
+    justify-content: center;
+  }
+</style>
