@@ -31,7 +31,7 @@ export class GoogleFormAnswerController {
 
   @Get()
   getAllGoogleFormAnswersFromFile() {
-    return this.googleFormAnswerService.getAllfromFile();
+    return this.googleFormAnswerService.getAllAnswersFromFile();
   }
   // @Get()
   // findAll() {

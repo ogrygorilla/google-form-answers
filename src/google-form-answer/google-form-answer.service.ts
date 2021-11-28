@@ -14,7 +14,7 @@ export class GoogleFormAnswerService {
     return 'This action adds a new googleFormAnswer';
   }
 
-  async getAllfromFile() {
+  getAllAnswersFromFile() {
     console.log(
       'DIRNAME: ',
       path.resolve('src/google-form-answer/google-form-answers.json'),
@@ -46,6 +46,11 @@ export class GoogleFormAnswerService {
         e,
       );
     }
+  }
+
+  getLastAnswer() {
+    const answers: any = JSON.parse(this.getAllAnswersFromFile());
+    return answers[answers.length - 1];
   }
 
   findAll() {
