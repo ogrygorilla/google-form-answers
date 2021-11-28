@@ -23,7 +23,7 @@
   {
     "teaName": "Pomegranate Tea",
     "sweet": "true",
-    "fruity": "true",
+    "fruity": "false",
     "vanilla": "false",
     "noCaffeine": "true"
   }
