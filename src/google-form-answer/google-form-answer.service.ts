@@ -4,6 +4,10 @@ import { UpdateGoogleFormAnswerDto } from './dto/update-google-form-answer.dto';
 import * as fs from 'fs';
 import * as path from 'path';
 
+const GOOGLE_FORM_ANSWERS_PATH = path.resolve(
+  'src/google-form-answer/google-form-answers.json',
+);
+
 @Injectable()
 export class GoogleFormAnswerService {
   create(createGoogleFormAnswerDto: CreateGoogleFormAnswerDto) {
@@ -16,15 +20,12 @@ export class GoogleFormAnswerService {
       path.resolve('src/google-form-answer/google-form-answers.json'),
     );
     let googleFormAnswers: any;
-    const googleFormAnswersPath = path.resolve(
-      'src/google-form-answer/google-form-answers.json',
-    );
     try {
-      googleFormAnswers = fs.readFileSync(googleFormAnswersPath, 'utf8');
+      googleFormAnswers = fs.readFileSync(GOOGLE_FORM_ANSWERS_PATH, 'utf8');
     } catch (e) {
       console.log(
         'Error by reading file: ',
-        googleFormAnswersPath,
+        GOOGLE_FORM_ANSWERS_PATH,
         '\nerror: ',
         e,
       );
@@ -33,25 +34,14 @@ export class GoogleFormAnswerService {
   }
 
   writeAnswerToFile(createGoogleFormAnswerDto: CreateGoogleFormAnswerDto) {
-    const googleFormAnswersPath = path.resolve(
-      'src/google-form-answer/google-form-answers.json',
-    );
-    // const test = {
-    //   noCaffeine: 'Yes',
-    //   sweet: 'Yes',
-    //   fruity: 'Yes',
-    //   vanilla: 'Yes',
-    // };
+    const data = JSON.parse(fs.readFileSync(GOOGLE_FORM_ANSWERS_PATH, 'utf8'));
+    data.push(createGoogleFormAnswerDto);
     try {
-      fs.writeFileSync(
-        googleFormAnswersPath,
-        JSON.stringify(createGoogleFormAnswerDto),
-        'utf8',
-      );
+      fs.writeFileSync(GOOGLE_FORM_ANSWERS_PATH, JSON.stringify(data), 'utf8');
     } catch (e) {
       console.log(
         'Error by writing to file: ',
-        googleFormAnswersPath,
+        GOOGLE_FORM_ANSWERS_PATH,
         '\nerror: ',
         e,
       );
