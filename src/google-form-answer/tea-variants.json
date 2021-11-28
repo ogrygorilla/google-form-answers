@@ -1,0 +1,28 @@
+{
+    "teaName": "Blueberry Tea",
+    "sweet": true,
+    "fruity": false,
+    "vanilla": false,
+    "noCaffeine": false,
+},
+{
+    "teaName": "Frozen Raspberry Tea",
+    "sweet": true,
+    "fruity": true,
+    "vanilla": false,
+    "noCaffeine": false,
+},
+{
+    "teaName": "Strawberry Vanilla Tea",
+    "sweet": true,
+    "fruity": true,
+    "vanilla": true,
+    "noCaffeine": true,
+},
+{
+    "teaName": "Pomegranate Tea",
+    "sweet": true,
+    "fruity": true,
+    "vanilla": false,
+    "noCaffeine": true,
+},

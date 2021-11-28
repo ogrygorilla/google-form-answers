@@ -20,10 +20,13 @@ export class GoogleFormAnswerController {
   ) {}
 
   @Post()
-  addGoogleFormAnswer(@Req() req): void {
-    console.log(req);
-    const googleFormData = req.body;
-    console.log('new answer data:', googleFormData);
+  addGoogleFormAnswer(
+    @Body() createGoogleFormAnswerDto: CreateGoogleFormAnswerDto,
+  ): void {
+    // console.log(req);
+    // const googleFormData = req.body;
+    // console.log('new answer data:', googleFormData);
+    this.googleFormAnswerService.writeAnswerToFile(createGoogleFormAnswerDto);
   }
 
   @Get()

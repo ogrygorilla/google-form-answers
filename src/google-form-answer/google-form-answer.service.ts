@@ -16,10 +16,6 @@ export class GoogleFormAnswerService {
       path.resolve('src/google-form-answer/google-form-answers.json'),
     );
     let googleFormAnswers: any;
-    // const googleFormAnswersPath = path.resolve(
-    //   __dirname,
-    //   './google-forms-answers.json',
-    // );
     const googleFormAnswersPath = path.resolve(
       'src/google-form-answer/google-form-answers.json',
     );
@@ -34,6 +30,32 @@ export class GoogleFormAnswerService {
       );
     }
     return googleFormAnswers;
+  }
+
+  writeAnswerToFile(createGoogleFormAnswerDto: CreateGoogleFormAnswerDto) {
+    const googleFormAnswersPath = path.resolve(
+      'src/google-form-answer/google-form-answers.json',
+    );
+    // const test = {
+    //   noCaffeine: 'Yes',
+    //   sweet: 'Yes',
+    //   fruity: 'Yes',
+    //   vanilla: 'Yes',
+    // };
+    try {
+      fs.writeFileSync(
+        googleFormAnswersPath,
+        JSON.stringify(createGoogleFormAnswerDto),
+        'utf8',
+      );
+    } catch (e) {
+      console.log(
+        'Error by writing to file: ',
+        googleFormAnswersPath,
+        '\nerror: ',
+        e,
+      );
+    }
   }
 
   findAll() {
