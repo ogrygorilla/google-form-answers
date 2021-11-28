@@ -4,6 +4,7 @@ import { GoogleFormAnswerController } from './google-form-answer.controller';
 
 @Module({
   controllers: [GoogleFormAnswerController],
-  providers: [GoogleFormAnswerService]
+  providers: [GoogleFormAnswerService],
+  exports: [GoogleFormAnswerService],
 })
 export class GoogleFormAnswerModule {}
