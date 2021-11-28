@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "noCaffeine": true,
+    "sweet": true,
+    "fruity": true,
+    "vanilla": true
+  },
+  {
+    "noCaffeine": false,
+    "sweet": false,
+    "fruity": false,
+    "vanilla": false
+  }
+]

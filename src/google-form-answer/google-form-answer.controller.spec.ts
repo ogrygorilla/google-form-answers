@@ -11,7 +11,9 @@ describe('GoogleFormAnswerController', () => {
       providers: [GoogleFormAnswerService],
     }).compile();
 
-    controller = module.get<GoogleFormAnswerController>(GoogleFormAnswerController);
+    controller = module.get<GoogleFormAnswerController>(
+      GoogleFormAnswerController,
+    );
   });
 
   it('should be defined', () => {

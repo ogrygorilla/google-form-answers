@@ -13,29 +13,53 @@ export class TeaSuggestionService {
     private readonly googleFormAnswerService: GoogleFormAnswerService,
   ) {}
 
-  create(createTeaSuggestionDto: CreateTeaSuggestionDto) {
-    return 'This action adds a new teaSuggestion';
-  }
-
   getTeaSuggestionForLastGoogleFormAnswer() {
     // get last answer
     const lastAnswer = this.googleFormAnswerService.getLastAnswer();
     const teaSuggestion = this.getTeaSuggestion(lastAnswer);
-    // find proper tea (comparing with tea-variants file)
-    return JSON.stringify(lastAnswer);
+    return JSON.stringify(teaSuggestion);
   }
 
   getTeaSuggestion(googleFormAnswer: any) {
+    const matches = new Array(4).fill(0);
     const teaVariants = this.getAllTeaVariantFromFile();
-    return '';
+
+    // find matches
+    teaVariants.forEach((teaVariant, index) => {
+      Object.keys(teaVariant).forEach((key) => {
+        if (teaVariant[key] === googleFormAnswer[key]) {
+          matches[index]++;
+        }
+      });
+    });
+
+    // find most matched tea index
+    const max = Math.max(...matches);
+    const variantIndex = matches.indexOf(max);
+
+    // make suggestion
+    const suggestion =
+      variantIndex !== -1 && max !== 0
+        ? teaVariants[variantIndex]['teaName']
+        : 'No matches found';
+
+    console.log(teaVariants);
+    console.log(googleFormAnswer);
+    console.log(matches);
+    console.log(suggestion);
+    return suggestion;
   }
 
   getAllTeaVariantFromFile() {
     try {
-      return fs.readFileSync(TEA_VARIANTS_PATH, 'utf8');
+      return JSON.parse(fs.readFileSync(TEA_VARIANTS_PATH, 'utf8'));
     } catch (e) {
       console.log('Error by reading file: ', TEA_VARIANTS_PATH, '\nerror: ', e);
     }
+  }
+
+  create(createTeaSuggestionDto: CreateTeaSuggestionDto) {
+    return 'This action adds a new teaSuggestion';
   }
 
   findAll() {

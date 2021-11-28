@@ -50,6 +50,7 @@ export class GoogleFormAnswerService {
 
   getLastAnswer() {
     const answers: any = JSON.parse(this.getAllAnswersFromFile());
+    console.log('getLastAnswer', answers);
     return answers[answers.length - 1];
   }
 
